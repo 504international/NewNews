@@ -1,0 +1,18 @@
+{{#if access}}
+    {{!-- comment-section --}}
+    <div class="comment-section">
+        <h3 class="text-center mb-40">{{t "Leave a Comment"}}</h3>
+        <div class="disqus_comment_box" id="disqus_thread"></div>
+    </div>
+
+    {{!-- The #contentFor helper here will send everything inside it up to the matching #block helper found in default.hbs --}}
+    {{#contentFor "scripts"}}
+    <script>
+        var disqus_shortname = "newsportal-5"
+        var disqus_config = function () {
+            this.page.url = "{{url absolute="true"}}";
+            this.page.identifier = "ghost-{{comment_id}}";
+        };
+    </script>
+    {{/contentFor}}
+{{/if}}

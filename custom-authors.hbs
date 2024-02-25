@@ -1,0 +1,108 @@
+{{!< default}}
+
+<div class="Page-head-content pt-30">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mx-auto text-center">
+                {{#post}}
+                <div class="breadcrumbs-area">
+                    <nav aria-label="breadcrumb">
+                        <ol class="breadcrumb pl-0 mb-0">
+                            <li class="breadcrumb-item " aria-current="page">
+                                <span class="w-14 d-inline-block -mb-2">{{> icons/home}}</span> <a href="{{@site.url}}">{{t "Home"}}</a>
+                            </li>
+                            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div class="Page-head mb-25">
+                    <h2>{{t "Authors"}}</h2>
+                </div>
+                {{/post}}
+            </div>
+        </div>
+    </div>
+</div>
+
+{{!-- single authors card --}}
+{{#get "authors" limit="all" include="count.posts" order="count.posts desc"}}
+    {{#if authors}}
+    <div class="team-section-area">
+        <div class="container">
+            <div class="team-area">
+                <div class="row">
+                    {{#foreach authors}}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="author-content">
+                            <div class="single-authors{{#if profile_image}} author-profile{{/if}}">
+                                {{#if profile_image}}
+                                <img class="image" srcset="{{img_url profile_image size="s"}} 300w,
+                                    {{img_url profile_image size="m"}} 600w"
+                                    sizes="(max-width: 1300px) 600px, 600px"
+                                    src="{{img_url profile_image size="m"}}"
+                                    alt="{{name}}">
+                                <div class="overlay">
+                                    <div class="overlay-content d-flex justify-content-center flex-column align-items-center text-center px-15 py-15 h-100">
+                                        
+                                        {{#has any="facebook, twitter,website"}}
+                                        <ul class="social-profile-link d-flex flex-wrap">
+                                            {{#if facebook}}
+                                            <li class="bg-fb">
+                                                <a target="_blank" href="{{facebook_url}}" class="">{{> icons/facebook}}</a>
+                                            </li>
+                                            {{/if}}
+                                            {{#if twitter}}
+                                            <li class="bg-dimond-blue">
+                                                <a target="_blank" href="{{twitter_url}}">{{> icons/twitter}}</a>
+                                            </li>
+                                            {{/if}}
+                                            {{#if website}}
+                                            <li class="bg-red">
+                                                <a target="_blank" href="{{website}}">{{> icons/globe}}</a>
+                                            </li>
+                                            {{/if}}
+                                        </ul>
+                                        {{/has}}
+                                    </div>
+                                </div>
+                                {{/if}}
+                            </div>
+
+                            <div class="single-authors-title text-center py-10 px-20 bg-gray91 {{^if profile_image}}text-center mx-auto no-profile-img{{/if}}">
+                                <h5 class="mb-10"><a href="{{url}}">{{name}}</a></h5>
+                            {{#if bio}}
+                                <p>{{bio}}</p>
+                            {{/if}}
+
+                            <!-- No Author Image -->
+                            {{^if profile_image}}
+                            {{#has any="facebook, twitter,website"}}
+                            <ul class="social-profile-link text-center mx-auto d-flex flex-wrap">
+                                {{#if facebook}}
+                                <li class="bg-fb">
+                                    <a href="{{facebook_url}}" class="">{{> icons/facebook}}</a>
+                                </li>
+                                {{/if}}
+                                {{#if twitter}}
+                                <li class="bg-dimond-blue">
+                                    <a href="{{twitter_url}}">{{> icons/twitter}}</a>
+                                </li>
+                                {{/if}}
+                                {{#if website}}
+                                <li class="bg-red">
+                                    <a href="">{{> icons/globe}}</a>
+                                </li>
+                                {{/if}}
+                            </ul>
+                            {{/has}}
+                            {{/if}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/foreach}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+{{/get}}

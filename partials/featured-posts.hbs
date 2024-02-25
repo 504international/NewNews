@@ -1,0 +1,35 @@
+{{#get "posts" filter="featured:true" limit="3" include="tags"}}
+{{#if "posts"}}
+<div class="hero-section-area">
+    <div class="container">
+        <div class="featured-gallery-item mt-20">
+            {{#foreach posts visibility="all"}}
+            <div class="single-post hero-post single-featured-item d-flex flex-column justify-content-between px-15 py-30 px-lg-30" {{#if  feature_image}} style="background-image:url('{{feature_image}}');"{{/if}}>
+                <div class="feature-tag">
+                    {{tags limit="1"}}
+                </div>
+                <a class="post-card-link" href="{{url}}"></a>
+                <div class="postcard-text">
+                    <h4><a href="{{url}}">{{title}}</a></h4>
+                    <div class="card-details">
+                        <p class="d-flex align-items-center">
+                            <span class="w-14 inline-block">{{> icons/date}}</span>&nbsp;&nbsp;{{date format="MMM DD, YYYY"}}
+                        </p>
+                    </div>
+                    {{!-- {{#if @first}} --}}
+                    <p class="mb-0">
+                        {{#if custom_excerpt}}
+                            {{custom_excerpt}}
+                        {{else}}
+                            {{excerpt words="20"}}
+                        {{/if}}
+                    </p>
+                    {{!-- {{/if}} --}}
+                </div>
+            </div>
+            {{/foreach}}
+        </div>
+    </div>
+</div>
+{{/if}}
+{{/get}}

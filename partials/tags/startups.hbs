@@ -1,0 +1,39 @@
+
+<div class="latest-news-section section-space">
+    <div class="container">
+        <script>
+                // Get the date for one week ago
+                function getLastWeekDate() {
+                    var today = new Date();
+                    var lastWeek = new Date(today.getFullYear(), today.getMonth(), today.getDate() - 7);
+                    return lastWeek.toISOString().split('T')[0];
+                }
+
+                var lastWeekDate = getLastWeekDate();
+            </script>
+        {{#get "posts" limit="12" filter="tag:startups" include="tags"}}
+            {{#if posts}}
+             <div class="section-title d-flex align-items-center mt-50 mb-30">
+            {{> title-bar}}
+            <h4>{{t "Startups"}}</h4>
+            </div>
+            <div class="post-wrapper-content">
+                <div class="row">
+                    {{#foreach posts limit="4" to="1" visibility="all"}}
+                        {{> post-card/news-big-thumbnail}}
+                    {{/foreach}}
+                </div>
+            </div>
+            {{!-- <div class="latest-post-area">
+                <div class="post-wrapper-content">
+                    <div class="row">
+                        {{#foreach posts from="3" limit="8" visibility="all"}}
+                            {{> post-card/news-small-thumbnail}}
+                        {{/foreach}}
+                    </div>
+                </div>
+            </div> --}}
+            {{/if}}
+        {{/get}}
+    </div>
+</div>

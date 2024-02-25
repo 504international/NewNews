@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{#get "tags" limit="all" filter="visibility:public" include="count.posts" order="count.posts desc"}}
+    {{#if tags}}
+        <!-- tag section -->
+        <div class="tags-wrapper-sec section-padding">
+            <div class="container">
+                <div class="row">
+                    {{#foreach tags visibility="public"}}
+                    <div class="col-md-6 col-lg-4">
+                        <a class="single-tag-card" href="{{url}}">
+                            <div class="single-tag-item{{#unless feature_image}} no-feature-image{{/unless}}">
+                                {{#if feature_image}}
+                                <div class="tag-thumb">
+                                    <img loading="lazy" src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" 
+                            data-src="{{feature_image}}" alt="{{name}}">
+                                </div>
+                                {{/if}}
+                                <div class="tag-name pb-2">
+                                    <h6 class="tag">{{name}}</h6>
+                                    <p class="total-posts">{{plural count.posts empty="0" singular="%" plural="%"}}</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    {{/foreach}}
+                </div>
+            </div>
+        </div>
+        <!-- // tag section -->
+    {{/if}}
+{{/get}}

@@ -1,0 +1,35 @@
+<div class="cove-count-area">
+    <h2 class="cove-heading text-center mb-40">{{t "Leave a Comment"}}</h2>
+    <div class="cove-count-wrapper">
+        {{^if @member}}
+        <p>Sign in or become a {{@site.title}} member to join the conversation.<br>
+        Just enter your email below to get a log in link.</p>
+        <form data-members-form="signin" id="cove-login">
+            <div class="cove-input-wrapper">
+                <input class="cove-input" data-members-email type="email" required="true" placeholder="Enter your email" />
+                <button type="submit" class="cove-button">
+                    <span class="button-text">{{t "log In"}}</span>
+                    <span class="button-spinner" style="display:none">
+                        {{> icons/loader}}
+                    </span>
+                </button>
+            </div>
+            <span class="signin-success cove-text" style="display:none">Great! Please check your inbox (or spam folder) for a log in link.</span>
+            <span class="signin-error" style="display:none">{{t "Something didn't work. Please try again"}}.</span>
+        </form>
+        {{/if}}
+        <div id="cove"></div>
+        {{#if @member}}
+        <p class="cove-text">Signed in as {{@member.email}} · <a href="javascript:" data-members-signout>Sign out</a></p>
+        {{/if}}
+    </div>
+</div>
+<script>
+    const Cove = {
+    publication: "74a8e7d7af26777ce6ee3c642c2001d9",
+    contentId: "{{id}}",
+    memberId: "{{@member.uuid}}",
+    memberEmail: "{{@member.email}}",
+    memberName: "{{@member.firstname}}"
+    }
+</script>

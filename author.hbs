@@ -1,46 +1,72 @@
 {{!< default}}
 
-<div class="gh-page">
-    <div class="gh-container">
+{{#is "author"}}
+<div class="post-with-sidebar-area py-50">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+            {{#author}}
+                <div class="single-author-box author-card pb-30">
+                    <div class="row">
+                        {{#if profile_image}}
+                        <div class="col-md-4">
+                            <div class="author-profile-image">
+                                    <img loading="lazy" srcset="{{img_url profile_image size="s"}} 300w,
+                                            {{img_url profile_image size="m"}} 600w,
+                                            {{img_url profile_image size="l"}} 1000w,
+                                            {{img_url profile_image size="xl"}} 1300w,
+                                            {{img_url profile_image size="xxl"}} 2000w"
+                                    sizes="(max-width: 350px) 350px, 400px"
+                                    src="data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=" 
+                                    data-src="{{img_url profile_image size="m"}}"
+                                    alt="{{name}}"
+                                />
+                            </div>
+                        </div>
+                        {{/if}}
 
-        {{#author}}
-        <header class="gh-page-head">
-            {{#if profile_image}}
-                <img class="gh-author-image" src="{{profile_image}}" alt="{{name}}" />
-            {{/if}}
+                        <div class="{{#if profile_image}}col-md-8 author-header-content{{else}}col-md-12 mx-auto text-center author-meta-card{{/if}}">
+                            <div class="author-header-inner">
+                                <h3 class="author">{{name}}</h3>
+                                <div class="published-posts">
+                                    <h5>{{plural ../pagination.total empty='No post' singular='% post' plural='% posts'}}</h5>
+                                </div>
+                                {{#if bio}}
+                                    <p class="bio">
+                                        {{bio}}
+                                    </p>
+                                {{/if}}
+                                <!-- social icon -->
+                                {{#has any="facebook,twitter,website"}}
+                                <p>{{t "follow me"}} :</p>
+                                <div class="author-profile-link d-flex align-items-center flex-wrap">
+                                    {{#if facebook}}
+                                    <a class="text-fb w-16" href="{{facebook_url}}">{{> icons/facebook}}</a>
+                                    {{/if}}
 
-            <h1>{{name}}</h1>
-            {{#if bio}}
-                <p>{{bio}}</p>
-            {{/if}}
+                                    {{#if twitter}}
+                                    <a  class="text-dimond-blue w-16" href="{{twitter_url}}">{{> icons/twitter}}</a>
+                                    {{/if}}
 
-            <div class="gh-author-meta">
-                <div class="gh-author-links">
-                    {{#if website}}
-                        <a href="{{website}}" target="_blank" rel="noopener">Website</a>
-                    {{/if}}
-                    {{#if twitter}}
-                        <a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a>
-                    {{/if}}
-                    {{#if facebook}}
-                        <a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a>
-                    {{/if}}
+                                    {{#if website}}
+                                    <a class="text-red w-16" href="{{website}}">{{> icons/globe}}</a>
+                                    {{/if}}
+                                </div>
+                                {{/has}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
+            {{/author}}
             </div>
-
-            {{#if cover_image}}
-                <img class="gh-page-image" src="{{cover_image}}" alt="{{name}}" />
-            {{/if}}
-        </header>
-        {{/author}}
-
-        <div class="gh-postfeed">
-        {{#foreach posts}}
-
-            {{> "card"}} {{!-- partials/card.hbs --}}
-
-        {{/foreach}}
         </div>
+        <div class="row">
+            {{!-- published post by authors --}}
+            {{> loop}}
 
+            {{!-- sidebar column --}}
+            {{> sidebar}}
+        </div>
     </div>
 </div>
+{{/is}}

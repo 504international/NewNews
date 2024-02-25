@@ -1,0 +1,36 @@
+{{!< default}}
+
+<!-- Subscribe section start from here    -->
+<div class="subscribe-section py-50 pt-lg-100 pb-lg-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 mx-auto text-center">
+                <div class="section-title mb-40">
+                    <h2>{{t "Subscribe to see what we're thinking"}}</h2>
+                    <p>{{t "Subscribe to our newsletter to receive our latest news."}}</p>
+                </div>
+                <div class="signup-form">
+                    <form data-members-form="subscribe">
+                        <div class="signup-forms-content">
+                            <input data-members-name class="form-control signup-name" type="text" required="true" autocomplete="false" placeholder="{{t "Enter your name"}}">
+                            <input data-members-email class="form-control signup-email" type="email" required="true" autocomplete="false" placeholder="{{t "Enter your email"}}">
+                            <button  type="submit" class="btn btn-primary btn-subscribe text-white p-0">
+                                <span class="button-text">{{t "Subscribe"}}</span>
+                                <span class="button-loader">{{> "icons/loader"}}</span>
+                            </button>
+                        </div>
+                        <div class="message-text">
+                            <div class="message-success">
+                                {{{t "<strong>Great!</strong> Check your inbox and click the link to confirm your subscription"}}}
+                            </div>
+                            <div class="message-error">
+                                {{t "Please enter a valid email address!"}}
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>   
+        </div>
+    </div>
+</div>
+<!-- // Subscribe section end from here   -->

@@ -1,79 +1,154 @@
+
 <!DOCTYPE html>
-<html lang="{{@site.locale}}">
+<html class="no-js" lang="{{@site.locale}}" data-theme="light">
 <head>
-
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{asset "built/index.css"}}" />
-    <script src="{{asset "built/index.js"}}" defer></script>
-
-    <title>{{meta_title}}</title>
-
+    <title>{{meta_title page=(t "Page %")}}</title>
+    <!-- CSS Files -->
+    {{!-- <link rel="stylesheet" type="text/css" href="{{asset "/css/style.css"}}" /> --}}
+    <link rel="stylesheet" href="{{asset 'build/css/build.css'}}" />
     {{ghost_head}}
-    {{!-- Outputs important meta data and settings, should always be in <head> --}}
-
 </head>
-<body class="{{body_class}}">
+<body class="{{body_class}} ">
 <div class="gh-viewport">
+{{!-- Header for all pages --}}
+{{> header}}
 
-<header id="gh-head" class="gh-head">
-    <nav class="gh-head-inner gh-container">
-
-        <div class="gh-head-brand">
-            <a class="gh-head-logo" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            <a class="gh-burger" role="button" aria-label="menu">
-                <div class="gh-burger-box">
-                    <div class="gh-burger-inner"></div>
-                </div>
-            </a>
-        </div>
-        <div class="gh-head-menu">
-            {{navigation}}
-        </div>
-        <div class="gh-head-actions">
-            <div class="gh-head-actions-list">
-                {{search}}
-                {{#if @site.members_enabled}}
-                    {{^if @member}}
-                    <a class="gh-button" href="{{@site.signup_url}}">Subscribe</a>
-                    {{else}}
-                    <a class="gh-button" href="#/portal/account">Account</a>
-                    {{/if}}
-                {{/if}}
-            </div>
-        </div>
-    </nav>
-</header>
-
-<main class="gh-main">
-
-    {{{body}}}
-    {{!-- All content gets inserted here, index.hbs, post.hbs, etc --}}
-
-</main>
-
-<footer class="gh-foot">
-    <div class="gh-container">
-        <div class="gh-foot-menu">
-            {{navigation type="secondary"}}
-        </div>
-        <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-        </div>
+<main class="gh-main-viewport">
+    <div class="gh-side-nav" id="sidenav">
+        {{navigation type="secondary"}}
     </div>
-</footer>
+    <section class="gh-main">
 
+        {{{body}}}
+        {{!-- All content gets inserted here, index.hbs, post.hbs, etc --}}
+    </section>
+</main>  
+
+{{!-- Footer --}}
+{{> footer}}
 </div>
 
-{{!-- <foot> --}}
+{{!-- Jquery scripts --}}
+{{!-- <script src="https://cdn.cove.chat/comments.js" async></script> --}}
+{{!-- <script src="{{asset "/js/scripts.js"}}"></script> --}}
+
+{{#is "post,page"}}
+<script src="{{asset "/js/single.js"}}"></script>
+{{/is}}
+
+{{!-- to show block scripts --}}
+{{{block "scripts"}}}
+{{!-- ghost footer --}}
 {{ghost_foot}}
-{{!-- Outputs important scripts - should always be included before closing body tag --}}
 
 </body>
+ <script>   
+
+    pagination_next_page_number = '{{ pagination.next }}',
+    pagination_available_pages_number = '{{ pagination.pages }}';
+    
+    
+
+// Toggle the menu open and close when on mobile
+
+
+function openSideBar(){
+    let hamburger = document.getElementById('hamburger');
+    let sidenav = document.getElementById('sidenav');
+    let main = document.querySelector('.gh-main');
+    let container = document.querySelector('.gh-container');
+
+    hamburger.addEventListener('click', function() {
+        if (sidenav.style.width === '0px' || sidenav.style.width === '') {
+            sidenav.style.width = '250px';
+            sidenav.classList.add('gh-side-nav-open');
+            main.classList.add('gh-main-open');
+            container.classList.add('gh-open-container');
+        } else {
+            sidenav.style.width = '0px';
+            sidenav.classList.remove('gh-side-nav-open');
+            main.classList.remove('gh-main-open');
+            container.classList.remove('gh-open-container');
+        }
+    });
+}
+
+ function raisedNavbar(){
+    window.addEventListener('scroll', function() {
+        let header = document.getElementById('gh-head');
+        if (window.pageYOffset > 0) {
+            header.classList.add('scroll-shadow');
+        } else {
+            header.classList.remove('scroll-shadow');
+        }
+    });
+
+}
+function menuOpen() {
+    const burgerButton = document.querySelector('.gh-burger-inner');
+    burgerButton.addEventListener('click', function () {
+        document.body.classList.toggle('gh-head-open');
+    });
+}
+openSideBar()
+raisedNavbar()
+menuOpen()
+</script>
+
+<script type="module">
+    import tryghostcontentApi from 'https://cdn.jsdelivr.net/npm/@tryghost/content-api@1.11.17/+esm';
+
+    // Initialize the API
+    const api = new tryghostcontentApi({
+        url: 'https://theugandanexponent.com/',
+        key: '9b9deb11ea8bd23613b6b43e63',
+        version: 'v5'
+    });
+
+    async function fetchAndStorePosts() {
+        const posts = await api.posts.browse({ limit: 10 });
+        localStorage.setItem('posts', JSON.stringify(posts));
+    }
+
+    function getPostsFromStorage() {
+        const posts = localStorage.getItem('posts');
+        return JSON.parse(posts);
+    }
+
+    function displayPost(post) {
+        const postWrapper = document.getElementById("headlines");
+        postWrapper.innerHTML = `<a href="${post.url}"><h4>${post.title}</h4></a>`;
+    }
+
+    async function showTitles() {
+        let currentPostIndex = 0;
+
+        // Retrieve posts from Local Storage
+        const posts = getPostsFromStorage();
+        console.log(posts)
+
+        function displayNextPost() {
+            if (posts && currentPostIndex < posts.length) {
+                displayPost(posts[currentPostIndex]);
+                currentPostIndex = (currentPostIndex + 1) % posts.length;  // Loop back to the first post when reach the end
+            }
+        }
+
+        // Call displayNextPost directly without waiting for DOMContentLoaded
+        displayNextPost();
+
+        // Update the element every 10 seconds
+        setInterval(displayNextPost, 10000);
+    }
+
+    // Fetch and store posts, then show titles after DOM is fully loaded
+    fetchAndStorePosts().then(() => {
+        window.addEventListener('DOMContentLoaded', showTitles());
+    });
+
+</script>
+
 </html>

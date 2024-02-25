@@ -1,0 +1,41 @@
+{{!< default}}
+
+{{#post}}
+    <div class="page-wrapper">
+        {{> bredcrumb}}
+        
+        <div class="published-news-section">
+            <div class="container">
+                <div class="single-news-details">
+                    {{> "post-header"}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feature-full">
+        {{#if feature_image}}
+        <div class="news-picture my-20">
+            <img srcset="{{img_url feature_image size="s"}} 300w,
+            {{img_url feature_image size="m"}} 600w,
+            {{img_url feature_image size="l"}} 1000w,
+            {{img_url feature_image size="xl"}} 2000w"
+            sizes="(max-width: 800px) 400px,
+            (max-width: 1170px) 700px,
+            2000px" src="{{img_url feature_image size="xl"}}" alt="{{title}}">
+        </div>
+        {{/if}}
+    </div>
+    {{!-- News-full-content --}}
+    <div class="post-without-sidebar-area mt-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    {{> content}}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{!-- Related Post --}}
+    {{> related-posts}}
+{{/post}}

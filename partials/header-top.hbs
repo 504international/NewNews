@@ -1,0 +1,36 @@
+<div class="top-header-area bg-light">
+    <div class="container">
+        <div class="top-header d-flex justify-content-between  align-items-center">
+            <div class="top-header-left d-flex">
+                <div class="social-icon social-clip-path bg-black-russian d-flex align-items-center py-15 pr-30">
+                    <ul class="d-flex align-items-center">
+                        {{#if @site.facebook}}
+                            <li><a href="{{facebook_url}}" target="blank">{{> icons/facebook}}</i></a></li>
+                        {{/if}}
+                        {{#if @site.twitter}}
+                            <li><a href="{{twitter_url}}" target="blank">{{> icons/twitter}}</a></li>
+                        {{/if}}
+                        <li><a href="https://www.instagram.com/africarebirth/" target="blank">{{> icons/instagram}}</a></li>
+                    </ul>
+                </div>
+                <div class="day-highlight bg-primary d-flex justify-content-between  align-items-center maxw-600">
+                    <p><span class="date-name"></span>, {{date published_at format="MMMM DD, YYYY"}}</p>
+                </div>
+            </div>
+            <div class="top-header-right">
+                <div class="top-menu">
+                    <ul class="d-flex justify-content-end align-items-center flex-wrap"> 
+                        {{#if member}} 
+                            <li><a href="/account/">{{t "Account"}}</a></li>
+                            <li><a href="#" data-members-signout>{{t "Signout"}}</a></li>
+                            {{else}}
+                            <li><a href="/signin/">{{t "Sign in"}}</a></li>
+                            <li><a href="/membership/">{{t "Subscribe"}}</a></li>
+                        {{/if}}
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

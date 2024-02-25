@@ -1,0 +1,19 @@
+<div class="latest-news-section section-space">
+    
+        {{#get "posts" limit="12" filter="published_at:>'" + lastWeekDate + "'" include="tags"}}
+            {{#if posts}}
+                <div class="section-title d-flex align-items-center mt-50 mb-30">
+                    {{> title-bar}}
+                    <h4>{{t "Last week"}}</h4>
+                </div>
+                <div class="post-wrapper-content">
+                    <div class="row">
+                        {{#foreach posts limit="4" to="1" visibility="all"}}
+                            {{> post-card/news-big-thumbnail}}
+                        {{/foreach}}
+                    </div>
+                </div>
+            {{/if}}
+        {{/get}}
+    </div>
+</div>

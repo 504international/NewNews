@@ -1,0 +1,157 @@
+{{!-- <div class="header-area"> --}}
+    {{!-- {{> header-top}} --}}
+    {{!-- <div class="header-news-marquee bg-light">
+        <div class="container">
+           <div class="mid-menu first-menu"> --}}
+                {{!-- <div class="search">
+                    {{search}}
+                </div> --}}
+                {{!-- <div class="logo py-15">
+                    {{#if @site.logo}}
+                        <a href="{{@site.url}}"><img src="{{@site.logo}}" alt="{{@site.title}}"></a>
+                    {{else}}
+                        <h2><a href="{{@site.url}}">{{@site.title}}</a></h2>
+                    {{/if}}
+                </div> --}}
+                {{!-- <div>
+                    {{> social-follow}}
+                </div> --}}
+           {{!-- </div>
+        </div>
+    </div>
+    <div class="main-menu-area bg-light">
+        <div class="container">
+            <div class="main-menu-container">
+                <div class="main-menu d-flex align-items-center">
+                    <ul class="menu menu-with-drag d-flex" id="menu">
+                        {{navigation}}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!--=====   mobile-container  ==========-->
+        <div id="mobile-container"></div>
+    </div>
+</div> --}}
+
+{{!-- <div class="new-header">
+        <div class="top-nav">
+        <div class="left-menu">
+            <div>
+                 <a class="burger" role="button" aria-label="menu">
+                <div class="burger-box" id="hamburger">
+                    <div class="burger-inner"></div>
+                </div>
+            </a>
+            {{search}}
+            </div>
+           
+        </div>
+
+        <div class="top-logo">
+            <a class="" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                   <h1> {{@site.title}}</h1>
+                {{/if}}
+            </a>
+        </div>
+        
+        
+        <div class="social-corner">
+                <ul class="social-card  social-icons">
+                        <li>
+                            <a  class="bg-fb" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.facebook.com/Africa-Rebirth-102647825544384">{{> icons/facebook}}</a>
+                        </li>
+                        <li>
+                            <a class="bg-dimond-blue" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.facebook.com/Africa-Rebirth-102647825544384">{{> icons/twitter}}</a>
+                        </li>
+                        <li>
+                            <a class=" bg-blue" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.instagram.com/africarebirth/">{{> icons/linkedin}}</a>
+                        </li>
+                        <li>
+                            <a onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.instagram.com/africarebirth/" class="bg-light-red">{{> icons/instagram}}</a>
+                            
+                        
+                        </a>
+                        </li>
+                        
+                    </ul>
+           
+        </div>
+    </div>
+    <div class="nav-container"> --}}
+        {{!-- <button class="scroll-button left" id="scroll-left" aria-label="Scroll Left">{{> icons/chevron-left}}</button> --}}
+
+        {{!-- <div class="gh-head-secondary gh-secondary-nav table-responsive" id="secondary-nav">
+            {{navigation type="primary"}}
+        </div> --}}
+
+        {{!-- <button class="scroll-button right" id="scroll-right" aria-label="Scroll Right">{{> icons/chevron-right}}</button> --}}
+    {{!-- </div>
+
+</div> --}}
+
+<header id="gh-head" class="gh-head ">
+    <nav class="gh-head-inner gh-container gh-primary-nav">
+
+        <div class="gh-head-brand">
+            <a class="gh-head-logo" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                    {{@site.title}}
+                {{/if}}
+            </a>
+            <a class="gh-burger" role="button" aria-label="menu">
+                <div class="gh-burger-box">
+                    <div class="gh-burger-inner"></div>
+                </div>
+            </a>
+        </div>
+        <div class="gh-head-menu">
+             <a class="gh-burger gh-visible-burger" role="button" aria-label="menu">
+                <div class="gh-burger-box" id="hamburger">
+                    <div class="gh-burger-inner"></div>
+                </div>
+            </a>
+            {{search}}
+           
+        </div>
+        
+        <div class="gh-head-actions">
+            <div class="gh-head-actions-list">
+                <div class="social-corner">
+                <ul class="social-icons">
+                        <li>
+                            <a onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.facebook.com/theafricanexponent">{{> icons/facebook}}</a>
+                        </li>
+                        <li>
+                            <a onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://twitter.com/africanexponent">{{> icons/twitter}}</a>
+                        </li>
+                        <li>
+                            <a  onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.linkedin.com/company/the-african-exponent/about/">{{> icons/linkedin}}</a>
+                        </li>
+                        <li>
+                            <a onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.instagram.com/africanexponent/" class="bg-light-red">{{> icons/instagram}}</a>
+                            
+                        
+                        </a>
+                        </li>
+                        
+                    </ul>
+           
+        </div>
+            </div>
+        </div>
+    </nav>
+    <nav class="gh-head-secondary gh-secondary-nav">
+        {{navigation type="primary"}}
+    </nav>
+
+    {{!-- Mobile nav  --}}
+    <nav class="gh-head-mobile">
+        <div class="gh-head-inner">{{navigation type="primary"}}</div>
+    </nav>
+</header>

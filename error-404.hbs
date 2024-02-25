@@ -1,0 +1,20 @@
+{{!< default }}
+
+<div class="blog-content-area section-padding py-md-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-lg-8 pb-md-0 pb-30 mx-auto text-center">
+                <div class="error-content error-styles">
+                    <img src="{{asset "/img/error/404-error.png"}}" alt="{{statusCode}}">
+                    <div class="back-home text-center">
+                        <div class="erorr-404 mb-20">{{statusCode}}</div>
+                        <div class="error-text maxw-350 mx-auto mb-20">
+                            <p>{{message}}</p>
+                        </div>
+                        <a href="{{@site.url}}">{{t "Go Back Home →"}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
