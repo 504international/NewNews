@@ -1,8 +1,8 @@
 {
-    "name": "ghost-starter-theme",
-    "description": "A starter theme for Ghost theme development",
-    "demo": "https://starter.ghost.io",
-    "version": "2.0.1",
+    "name": "new-news",
+    "description": "A commercial news magazine for ghost platform",
+    "demo": "#",
+    "version": "1.0.0",
     "engines": {
         "ghost": ">=5.0.0"
     },
@@ -18,9 +18,9 @@
         "pretest": "npm run build"
     },
     "author": {
-        "name": "Ghost Foundation",
-        "email": "hello@ghost.org",
-        "url": "https://ghost.org"
+        "name": "504 international",
+        "email": "info@504international.com",
+        "url": "https://www.504international.com"
     },
     "gpm": {
         "type": "theme",
@@ -36,7 +36,7 @@
     ],
     "repository": {
         "type": "git",
-        "url": "https://github.com/TryGhost/Starter.git"
+        "url": "https://github.com/504international/NewNews.git"
     },
     "bugs": "https://github.com/TryGhost/Starter/issues",
     "contributors": "https://github.com/TryGhost/Starter/graphs/contributors",
